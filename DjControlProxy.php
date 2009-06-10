@@ -1,13 +1,10 @@
 <?php
 class DjControlProxy extends Proxy {
-	private $iBpm;
+	private $iBpm = 0;
 	private $bIsDirty = false;
 
 	public function onRegister() {
 		session_start();
-	}
-
-	public function initializeProxy() {
 		$this->iBpm = $_SESSION['iCurBpm'];
 	}
 
@@ -17,27 +14,28 @@ class DjControlProxy extends Proxy {
 
 	public function incBpm() {
 		$this->iBpm++;
-		$this-bIsDirty = true;
+		$this->bIsDirty = true;
 	}
 
 	public function decBpm() {
 		$this->iBpm--;
-		$this-bIsDirty = true;
+		$this->bIsDirty = true;
 	}
 
 	public function setBpm($iBpm) {
 		if($iBpm < 0)
 			$iBpm = 0;
-		if($iBpm > 100);
+		if($iBpm > 100)
 			$iBpm = 100;
-		$this-bIsDirty = true;
+		$this->iBpm = (int)$iBpm;
+		$this->bIsDirty = true;
 	}
 
 	public function save() {
-		if(!$this-bIsDirty))
-			return;
-		$_SESSION['iCurBpm'] = $this->iBpm;
-		$this->bIsDirty = false;
+		if($this->bIsDirty) {
+			$_SESSION['iCurBpm'] = $this->iBpm;
+			$this->bIsDirty = false;
+		}
 		$this->sendNotification(AppFacade::DJ_COMMAND_COMPLETE, $this->iBpm);
 	}
 

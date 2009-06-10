@@ -1,14 +1,16 @@
 <div id="dpControl">
 	<p id="djControlTitle">
-		<form target="_self" method="post" action="DjControl">
-			<label id="djControlBpmLabel" for="jsControlBpmInput" >
-				Enter BPM:
-			</label>
-			<input id="jsControlBpmInput" name="iBpm" type="text" />
-			<input type="submit" value="Set" />
+		<form target="_self" method="post" action="">
 			<div>
-				<input id="djControlDecBtn" name="inc" type="button" value="<<" />
-				<input id="djControlIncBtn" name="dec" type="button" value=">>" />
+				<label id="djControlBpmLabel" for="jsControlBpmInput" >
+					Enter BPM:
+				</label>
+				<input id="jsControlBpmInput" name="iBpm" type="text" />
+			</div>
+			<input type="submit" name="sAction" value="set" />
+			<div>
+				<input id="djControlDecBtn" name="sAction" type="submit" value="<<" />
+				<input id="djControlIncBtn" name="sAction" type="submit" value=">>" />
 			</div>
 		</form>
 	</p>

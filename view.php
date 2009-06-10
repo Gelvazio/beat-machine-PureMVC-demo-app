@@ -13,9 +13,9 @@
 	<p>
 	<?php
 		/// display 0 by default
-		$iBpm = $this->iBpm;
-		if(!is_integer($this->iBpm) && $this->iBpm > 0)
-			$iBpm = 0;
+		$iBpm = 0;
+		if(is_integer($this->iBpm) && $this->iBpm > 0)
+			$iBpm = $this->iBpm;
 	?>
 	Current BPM: <?=$iBpm?>
 	</p>

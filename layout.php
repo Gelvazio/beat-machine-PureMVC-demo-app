@@ -5,9 +5,9 @@
 		</title>
 	</head>
 	<body>
-	<?php include('control.php'); ?>
-	<hr/>
 	<?php include('view.php'); ?>
+	<hr/>
+	<?php include('control.php'); ?>
 	</body>
 </html>
 

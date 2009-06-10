@@ -27,8 +27,16 @@ class DjBpmMediator extends Mediator {
 	 * +------+
 	 */
 	protected function  renderBpmGraphic() {
-		return sprintf("+%'-{$this->iBpm}s+", '') . 	// renter top
-				sprintf("|%'.{$this->iBpm}s|", '') .	// render center
-				sprintf("+%'-{$this->iBpm}s+", '');		// render bottom
+		$iBuf = 100 - $this->iBpm;
+		return sprintf("+%'-100s+", '') . $this->getNewlineDelimiter() . 	// renter top
+				sprintf("*%'.{$this->iBpm}s", '') .	// render center
+				sprintf("% {$iBuf}s*", '') . $this->getNewlineDelimiter() .	// render center
+				sprintf("+%'-100s+", '') . $this->getNewlineDelimiter();	// render bottom
+	}
+
+	protected function getNewlineDelimiter($isCli=false) {
+		if($isCli)
+			return PHP_EOL;
+		return '<br/>';
 	}
 }

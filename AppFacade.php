@@ -22,8 +22,9 @@ class AppFacade extends Facade {
 	}
 	
 	public function initializeFacade() {
-		$sCommandName = 'DjControlCommand.php';
-		require_once($sCommandName);
+		parent::initializeFacade();
+		$sCommandName = 'DjControlCommand';
+		require_once("$sCommandName.php");
 		$this->registerCommand(self::SEND_DJ_COMMAND, $sCommandName);
 	}
 }

@@ -5,7 +5,9 @@ class DjControlProxy extends Proxy {
 
 	public function onRegister() {
 		session_start();
-		$this->iBpm = $_SESSION['iCurBpm'];
+		
+		if(isset($_SESSION) && isset($_SESSION['iCurBpm']))
+			$this->iBpm = $_SESSION['iCurBpm'];
 	}
 
 	public function getBpm() {
@@ -13,13 +15,11 @@ class DjControlProxy extends Proxy {
 	}
 
 	public function incBpm() {
-		$this->iBpm++;
-		$this->bIsDirty = true;
+		$this->setBpm($this->iBpm + 1);
 	}
 
 	public function decBpm() {
-		$this->iBpm--;
-		$this->bIsDirty = true;
+		$this->setBpm($this->iBpm - 1);
 	}
 
 	public function setBpm($iBpm) {

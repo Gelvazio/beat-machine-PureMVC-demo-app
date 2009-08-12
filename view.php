@@ -17,6 +17,6 @@
 		if(is_integer($this->iBpm) && $this->iBpm > 0)
 			$iBpm = $this->iBpm;
 	?>
-	Current BPM: <?=$iBpm?>
+	Current BPM: <?php echo $iBpm; ?>
 	</p>
 </div>
